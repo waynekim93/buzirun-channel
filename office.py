@@ -118,9 +118,19 @@ def _channel_stats():
                    "hidden": bool(ch.get("hiddenSubscriberCount")),
                    "top": sorted(vids, key=lambda v: -v["views"])[:3],
                    "shorts_views": sum(v["views"] for v in vids), "shorts_likes": sum(v["likes"] for v in vids)}
+    # 자동화 시작일(첫 업로드) · 하루 평균 구독자 증가 (시작 때 구독자 0명 기준 + 최근 7일)
+    first = min((h.get("publish_at") or h.get("date") or "") for h in hist if h.get("video_id"))[:10] if titles else ""
+    st["stats"]["started"] = first or "2026-11-20"
+    days = max(1, (datetime.now(KST).date() - datetime.fromisoformat(st["stats"]["started"]).date()).days + 1)
+    st["stats"]["days"] = days
+    st["stats"]["subs_per_day"] = round(subs / days, 1)
     day = datetime.now(KST).strftime("%Y-%m-%d")
     sh = [x for x in st.get("stats_hist", []) if x.get("d") != day]
     st["stats_hist"] = (sh + [{"d": day, "subs": subs, "views": views}])[-90:]
+    week = [x for x in st["stats_hist"] if x["d"] >= (datetime.now(KST).date() - timedelta(days=7)).isoformat()]
+    if len(week) >= 2:  # 최근 7일 기록이 2일 이상 쌓이면 최근 추세도
+        span = max(1, (datetime.fromisoformat(week[-1]["d"]) - datetime.fromisoformat(week[0]["d"])).days)
+        st["stats"]["subs_per_day_7d"] = round((week[-1]["subs"] - week[0]["subs"]) / span, 1)
 
 
 def _save():
