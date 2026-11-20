@@ -77,11 +77,16 @@ SLOTS = {
 }
 BASE_TAGS = ["부동산", "재테크", "내집마련", "부동산공부", "부동산상식", "부지런", "Shorts"]
 SUBSCRIBE = "https://www.youtube.com/@buzirun?sub_confirmation=1"
-# 마무리 문장: 목표가 구독자 500명이라 구독 유도를 더 자주, 가끔 댓글 · 저장 (참여도도 노출에 중요)
-CTAS = [("마지막 문장은 짧은 구독 유도. '부지런한 사람이 집을 산다'와 이어지게 "
-         "(예: '이런 거 매일 알려 드려요, 부지런히 구독!', '내 집 마련까지 부지런하게, 구독하고 같이 가요').", 6),
-        ("마지막 문장은 시청자가 자기 경험을 댓글로 쓰고 싶어지는 짧은 질문 (예: '여러분은 이거 알고 계셨나요? 댓글로!').", 2),
-        ("마지막 문장은 '나중에 꼭 필요하니 저장해 두세요!'처럼 저장 유도 + 구독.", 2)]
+# 마무리 문장: 매번 구독 유도는 피하고(사용자 11/20) 댓글 질문 위주로 섞음 — 직전 영상과 같은 종류는 안 씀
+CTAS = {
+    "comment": ("마지막 문장은 시청자가 자기 경험·생각을 댓글로 쓰고 싶어지는 짧은 질문. 주제에 딱 맞게, 답하기 쉽게 "
+                "(예: '여러분 계약할 때 이거 확인하셨나요?', '이 경우라면 여러분은 어떻게 하시겠어요?'). '댓글로!'는 붙여도 되고 안 붙여도 됨.", 4),
+    "debate": ("마지막 문장은 의견이 갈릴 만한 양자택일 질문 (예: '전세 vs 월세, 지금 여러분 선택은?').", 2),
+    "subscribe": ("마지막 문장은 짧고 자연스러운 구독 권유. 부담스럽지 않게 한 마디 "
+                  "(예: '이런 한 끗 차이, 부지런히 알려 드릴게요.').", 2),
+    "save": ("마지막 문장은 '나중에 꼭 필요할 때 보시게 저장해 두세요' 같은 저장 유도.", 1),
+    "none": ("마지막 문장은 따로 행동을 권하지 말고, 여운이 남는 한 줄 정리로 끝내기.", 1),
+}
 # 유튜브 예약 공개 시각 (KST) — 사용자 11/20 결정 07:00 / 12:00 / 18:00 / 21:00
 PUBLISH_TIMES = {"morning": (7, 0), "noon": (12, 0), "evening": (18, 0), "night": (21, 0)}
 HORIZON = timedelta(hours=26)    # 이 시간 안에 공개될 회차만 미리 만듦
@@ -154,7 +159,10 @@ def run_once(slot: str, topic: str | None, upload: bool, privacy: str, category:
     facts = research(f"{topic} ({LABELS[category]})") if os.environ.get("RESEARCH") == "1" else ""
     if facts:
         print("  확인된 사실:\n" + "\n".join("    " + x for x in facts.splitlines() if x.strip()))
-    cta = random.choices([c for c, _ in CTAS], weights=[w for _, w in CTAS])[0]
+    last_cta = history[-1].get("cta") if history else None
+    pool = {k: v for k, v in CTAS.items() if k != last_cta}
+    cta_key = random.choices(list(pool), weights=[w for _, w in pool.values()])[0]
+    cta = pool[cta_key][0]
     s = write_script(f"{topic}\n(채널 콘셉트: {PROFILE})\n(카테고리 지침: {guide})\n(마무리: {cta})"
                      + (f"\n(확인된 사실 — 숫자는 여기 있는 것만, [불확실]은 숫자 빼고:\n{facts})" if facts else
                         "\n(최신 기준을 확인할 수 없음 — 세율·한도·금액·기간·금리 같은 구체적 숫자와 '올해 바뀐' 같은 시점 단정은 "
@@ -176,7 +184,7 @@ def run_once(slot: str, topic: str | None, upload: bool, privacy: str, category:
                 label=f"부지런 · {LABELS[category]}", title_point=s.get("title_point") or "")
 
     record = {"date": now.isoformat(timespec="minutes"), "slot": slot, "category": category, "topic": topic,
-              "title": title, "file": out.name, "video_id": None}
+              "title": title, "file": out.name, "video_id": None, "cta": cta_key}
     if idea:
         record["idea"] = idea["text"][:200]
     if publish_at:
