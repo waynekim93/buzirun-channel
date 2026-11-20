@@ -223,7 +223,10 @@ def main():
             report("ops", f"만들 회차 {n}개: " + ", ".join(s.replace("_", " ") for s in slots), "pd",
                    todo=[s.replace("_", " ") for s in slots])
     elif cmd == "stats" and _enabled():
-        _load()
+        # 15분마다(stats.yml). 제작 중엔 건너뜀 — 제작 쪽이 일터 기록 전체를 계속 덮어쓰고, 끝날 때 통계도 갱신함
+        if _load().get("run", {}).get("status") == "working":
+            print("제작 중이라 통계 갱신 건너뜀")
+            return
         _channel_stats()
         _save()
     elif cmd == "say" and len(args) >= 3:
