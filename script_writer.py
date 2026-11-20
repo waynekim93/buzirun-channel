@@ -155,6 +155,43 @@ def write_script(topic: str, seconds: int = 30, model: str | None = None) -> dic
     resp = _generate(client, [fixed] if fixed else FALLBACK_MODELS, prompt, config)
     data = json.loads(resp.text)
     data["sentences"] = [s.strip() for s in data["sentences"] if s.strip()]
+    return review_script(client, data, fixed)
+
+
+REVIEW_PROMPT = """너는 한국 부동산 법 · 세금 · 제도에 밝은 꼼꼼한 검수자야. 아래는 유튜브 쇼츠 대본(JSON)이야.
+
+{script}
+
+다음을 찾아서 고쳐:
+- 사실과 다르거나 법 · 제도를 오해하게 만드는 문장 (예: '법적으로 10년간 못 올린다'처럼 실제보다 강하게 말한 것)
+- 과장 · 단정 표현 ('폭락', '절대', '무조건', '100%', '전 재산') → 사실에 맞는 정도로
+- 확실하지 않은 구체적 숫자(세율 · 한도 · 금액 · 연도) → 빼거나 원리로
+- 오탈자 · 어색한 말, 제목이 내용과 안 맞는 것 (title_point 는 고친 제목 안에 그대로 있어야 함)
+문제가 없는 문장은 그대로 두고, 재미 · 훅 · 말투 · 문장 수 · 문장 길이는 최대한 유지해.
+같은 JSON 구조 그대로(모든 키 유지) + "fixes": ["고친 내용 한 줄씩"] 를 더해서 JSON으로만 답해."""
+
+
+def review_script(client, data: dict, model: str | None = None) -> dict:
+    """대본 검수: 사실 오류 · 과장 · 오탈자 고치기. 실패하거나 결과가 이상하면 원래 대본 그대로."""
+    config = types.GenerateContentConfig(response_mime_type="application/json", temperature=0.2)
+    try:
+        resp = _generate(client, [model] if model else FALLBACK_MODELS,
+                         REVIEW_PROMPT.format(script=json.dumps(data, ensure_ascii=False, indent=1)), config)
+        out = json.loads(resp.text)
+        sents = [s.strip() for s in out.get("sentences", []) if isinstance(s, str) and s.strip()]
+        if not out.get("title") or abs(len(sents) - len(data["sentences"])) > 1:
+            raise ValueError("검수 결과 형식이 달라짐")
+        for k in ("title", "title_point", "description", "tags"):
+            if out.get(k):
+                data[k] = out[k]
+        data["sentences"] = sents
+        if len(sents) != len(data.get("scenes") or sents):  # 문장 수가 바뀌면 장면 수도 맞춤
+            data["scenes"] = [(data["scenes"] * 2)[i] for i in range(len(sents))] if data.get("scenes") else None
+            data["scenes_alt"] = None
+        for f in out.get("fixes") or []:
+            print(f"  ✏️ 검수: {f}")
+    except (Exception, SystemExit) as e:
+        print(f"  (검수 건너뜀: {str(e)[:100]})")
     return data
 
 

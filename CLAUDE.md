@@ -27,7 +27,7 @@
 | `settings.py` | 비밀값: 환경변수 → `.env` → `~/.buzirun/channel/*` 순 |
 
 ## 카테고리 (같은 카테고리 연달아 금지, 초보/투자자 섞기)
-초보: subscription 청약·전월세 · contract 계약·매매 상식 · tax 세금·정책 / 투자자: commercial 건물·상가 · land 토지 · auction 경매·공매
+초보: subscription 청약·전월세 · contract 계약·매매 상식 · tax 세금·정책 / 투자자: commercial 건물·상가 · land 토지 · auction 경매·공매 / 재미(11/20 추가): landlord 건물주의 세계 · trivia 부동산 잡학·역사
 
 ## 사용자 결정
 - 디자인: 박스 없이 깔끔하게. 제목 = 왼쪽 정렬 흰 글씨 60px, 핵심 말(`title_point`)만 노랑, 위에 작은 노랑 라벨 + 짧은 선. 자막 = 흰 글씨 + 그림자, 읽는 단어 노랑. 하단 노랑 진행 막대 + @buzirun, 끝 2.6초 슬로건('집을 산다'만 노랑). 기울임 · 큰 노랑 박스는 싫어함.

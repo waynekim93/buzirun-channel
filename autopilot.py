@@ -62,18 +62,36 @@ CATEGORIES = {
                 FORMAT + "어려운 용어는 한 번 더 쉬운 말로.",
                 "차근차근 풀어 주듯 또렷하게",
                 ["부동산경매", "경매", "공매", "부동산투자"], "투자자"),
+    # 사용자 11/20 아이디어: 건물주 입장 · 쏠쏠하고 재미있는 지식 · 역사 (재미로 보다가 구독하게)
+    "landlord": ("건물주의 세계 — 건물주 입장에서 본 진짜 이야기: 임대료는 어떻게 정하나, 공실이 무서운 이유, "
+                 "세입자 고를 때 보는 것, 건물주도 대출 이자에 쫓기는 구조, 건물주가 절대 안 하는 실수, 월세 받기까지 실제로 남는 돈",
+                 FORMAT + "'건물주는 사실 이렇게 생각합니다'처럼 건물주 속마음을 엿보는 재미로. "
+                 "건물주 미화 · 세입자 비하 금지, 양쪽 입장이 다 이해되게. 수익 과장 금지.",
+                 "속마음을 털어놓듯 솔직하고 흥미진진하게",
+                 ["건물주", "임대사업", "상가투자", "부동산투자"], "재미"),
+    "trivia": ("부동산 잡학 · 역사 — 쏠쏠하고 재미있는 부동산 이야기: 아파트 이름이 길어진 이유, 전세 제도가 한국에만 있는 이유, "
+               "평에서 제곱미터로 바뀐 사연, 강남 개발의 역사, 아파트 층수 · 동 번호에 숨은 규칙, 해외의 신기한 부동산 제도",
+               FORMAT + "'이건 술자리에서 써먹을 수 있다' 싶은 재미있는 사실 위주로. "
+               "역사 · 제도 이야기는 널리 확인된 사실만, 연도 · 숫자가 확실하지 않으면 빼고 이야기 흐름으로.",
+               "재미있는 비밀을 알려 주듯 생생하고 리듬감 있게",
+               ["부동산상식", "부동산역사", "아파트", "재테크"], "재미"),
 }
 LABELS = {"subscription": "청약·전월세", "contract": "계약·매매 상식", "tax": "세금·정책",
-          "commercial": "건물·상가", "land": "토지", "auction": "경매·공매"}
+          "commercial": "건물·상가", "land": "토지", "auction": "경매·공매",
+          "landlord": "건물주의 세계", "trivia": "부동산 잡학"}
 SLOTS = {
     "morning": ("아침 7시. 출근길에 폰으로 보는 직장인 · 내 집 마련 준비하는 사람들",
-                {"subscription": 3, "contract": 2, "tax": 3, "commercial": 1, "land": 1, "auction": 2}),
-    "noon": ("점심 12시. 점심시간에 잠깐 쉬며 보는 직장인들",
-             {"subscription": 2, "contract": 2, "tax": 2, "commercial": 2, "land": 2, "auction": 2}),
+                {"subscription": 3, "contract": 2, "tax": 3, "commercial": 1, "land": 1, "auction": 2,
+                 "landlord": 2, "trivia": 2}),
+    "noon": ("점심 12시. 점심시간에 잠깐 쉬며 가볍게 보는 직장인들",
+             {"subscription": 2, "contract": 2, "tax": 2, "commercial": 1, "land": 1, "auction": 2,
+              "landlord": 3, "trivia": 3}),
     "evening": ("저녁 6시. 퇴근길에 재테크 공부하는 사람들",
-                {"subscription": 2, "contract": 2, "tax": 2, "commercial": 2, "land": 2, "auction": 3}),
+                {"subscription": 2, "contract": 2, "tax": 2, "commercial": 2, "land": 2, "auction": 3,
+                 "landlord": 2, "trivia": 2}),
     "night": ("밤 9시. 집에서 여유 있게 부동산 공부하는 사람들 · 투자 관심층",
-              {"subscription": 2, "contract": 1, "tax": 2, "commercial": 3, "land": 3, "auction": 3}),
+              {"subscription": 2, "contract": 1, "tax": 2, "commercial": 2, "land": 2, "auction": 3,
+               "landlord": 3, "trivia": 3}),
 }
 BASE_TAGS = ["부동산", "재테크", "내집마련", "부동산공부", "부동산상식", "부지런", "Shorts"]
 SUBSCRIBE = "https://www.youtube.com/@buzirun?sub_confirmation=1"

@@ -19,7 +19,7 @@ on:
         description: "카테고리 (비우면 시간대별 랜덤)"
         required: false
         type: choice
-        options: ["", subscription, contract, tax, commercial, land, auction]
+        options: ["", subscription, contract, tax, commercial, land, auction, landlord, trivia]
       topic:
         description: "주제 (비우면 디스코드 아이디어 → 없으면 AI가 선정)"
         required: false
