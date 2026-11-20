@@ -180,6 +180,7 @@ ScaledBorderAndShadow: yes
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,{FONT_NAME},82,{YELLOW},&H00FFFFFF,&H60000000,&H80000000,0,0,0,0,100,100,0,0,1,3,3,5,70,70,0,1
 Style: Title,{FONT_NAME},60,&H00FFFFFF,&H00FFFFFF,&H70000000,&H80000000,0,0,0,0,100,100,-1,0,1,2,3,7,80,200,0,1
+Style: Hook,{FONT_NAME},112,&H00FFFFFF,&H00FFFFFF,&H50000000,&H70000000,0,0,0,0,100,100,-2,0,1,4,5,5,80,80,0,1
 Style: Label,{FONT_NAME},28,{YELLOW},&H00FFFFFF,&H70000000,&H80000000,0,0,0,0,100,100,4,0,1,1,2,7,80,80,0,1
 Style: Shape,{FONT_NAME},10,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
 Style: Mark,{FONT_NAME},34,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,2,0,3,60,60,0,1
@@ -200,15 +201,26 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     lines.append(f"Dialogue: 0,{t0},{t1},Shape,,0,0,0,,{{\\an7\\pos(0,0)\\1a&HA0&\\blur80\\p1}}"
                  f"m -100 {H - 330} l {W + 100} {H - 330} {W + 100} {H + 100} -100 {H + 100}{{\\p0}}")
     if title:
-        # 왼쪽 정렬 에디토리얼 레이아웃: 검정 라벨 탭 + 줄마다 길이에 맞춰 붙는 노랑 하이라이트 박스 (왼쪽에서 살짝 밀려 들어옴)
+        # 첫 화면 후킹: 처음 HOOK초 동안 제목을 화면 가운데 크게(핵심 말 노랑) + 배경 살짝 어둡게
+        # → 끝날 때 위로 작아지며 사라지고, 그 자리에 평소 작은 제목이 나타남 (쇼츠는 첫 1~2초 화면이 사실상 썸네일)
+        hook = min(1.6, total * 0.3)
+        ms = round(hook * 1000)
+        th = ass_time(hook)
+        lines.append(f"Dialogue: 1,{t0},{th},Shape,,0,0,0,,{{\\an7\\pos(0,0)\\1c&H000000&\\1a&H70&\\fad(0,300)\\p1}}"
+                     f"m 0 0 l {W} 0 {W} {H} 0 {H}{{\\p0}}")
+        lines.append(f"Dialogue: 4,{t0},{th},Hook,,0,0,0,,{{\\an5\\move(540,860,540,330,{ms - 380},{ms})"
+                     f"\\fscx92\\fscy92\\t(0,180,\\fscx100\\fscy100)\\t({ms - 380},{ms},\\fscx50\\fscy50)"
+                     f"\\fad(0,260)}}{_title_text(title, title_point)}")
+        ts = ass_time(max(0.0, hook - 0.3))
+        # 평소 제목: 왼쪽 정렬, 작은 노랑 라벨 + 짧은 노랑 선 + 흰 제목(핵심 말 노랑)
         x, y = 80, 190
         if label:
-            lines.append(f"Dialogue: 2,{t0},{t1},Label,,0,0,0,,{{\\an7\\move({x - 24},{y},{x},{y},0,260)"
+            lines.append(f"Dialogue: 2,{ts},{t1},Label,,0,0,0,,{{\\an7\\move({x - 24},{y},{x},{y},0,260)"
                          f"\\fad(200,300)}}{ass_escape(label)}")
-            lines.append(f"Dialogue: 2,{t0},{t1},Shape,,0,0,0,,{{\\an7\\move({x - 24},{y + 46},{x},{y + 46},0,260)"
+            lines.append(f"Dialogue: 2,{ts},{t1},Shape,,0,0,0,,{{\\an7\\move({x - 24},{y + 46},{x},{y + 46},0,260)"
                          f"\\1c{GOLD}\\fad(200,300)\\p1}}m 0 0 l 44 0 44 4 0 4{{\\p0}}")  # 라벨 밑 짧은 노랑 선
             y += 66
-        lines.append(f"Dialogue: 2,{t0},{t1},Title,,0,0,0,,{{\\an7\\move({x - 40},{y},{x},{y},60,360)"
+        lines.append(f"Dialogue: 2,{ts},{t1},Title,,0,0,0,,{{\\an7\\move({x - 40},{y},{x},{y},60,360)"
                      f"\\fad(250,300)}}{_title_text(title, title_point)}")
     # 하단: 진행 막대(영상이 끝날 때까지 차오름) + 채널 표시
     bar_y = H - 120
