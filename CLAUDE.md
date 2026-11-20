@@ -23,6 +23,7 @@
 | `stock_video.py` | Pixabay 배경 — 장면마다 "영어 \| 다른 영어 표현 \| 한국어" 세 검색어 후보를 섞어 Gemini 가 고름 |
 | `voice_gemini.py` | Gemini TTS 4종 + Whisper 정렬 |
 | `ideas.py` · `alert.py` | 디스코드 아이디어 읽기 · 알림 |
+| `healthcheck.py` · `health.yml` | 빈 회차 감시(KST 06:03 · 14:53 · 19:13): 14시간 안 회차가 비면 autopilot 다시 실행 + 알림, 유튜브 로그인 풀림 알림 |
 | `youtube_uploader.py` · `auth_login.py` | 업로드 · 최초 로그인 |
 | `settings.py` | 비밀값: 환경변수 → `.env` → `~/.buzirun/channel/*` 순 |
 
