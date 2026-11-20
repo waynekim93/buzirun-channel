@@ -173,6 +173,8 @@ REVIEW_PROMPT = """너는 한국 부동산 법 · 세금 · 제도에 밝은 꼼
 
 def review_script(client, data: dict, model: str | None = None) -> dict:
     """대본 검수: 사실 오류 · 과장 · 오탈자 고치기. 실패하거나 결과가 이상하면 원래 대본 그대로."""
+    from office import report
+    report("review", "초안 받았습니다. 법·제도 오류랑 과장 표현 검수할게요 🔍", "reviewer", stage="review")
     config = types.GenerateContentConfig(response_mime_type="application/json", temperature=0.2)
     try:
         resp = _generate(client, [model] if model else FALLBACK_MODELS,
@@ -190,6 +192,7 @@ def review_script(client, data: dict, model: str | None = None) -> dict:
             data["scenes_alt"] = None
         for f in out.get("fixes") or []:
             print(f"  ✏️ 검수: {f}")
+            report("review", f"수정: {f}"[:140], "reviewer")
     except (Exception, SystemExit) as e:
         print(f"  (검수 건너뜀: {str(e)[:100]})")
     return data

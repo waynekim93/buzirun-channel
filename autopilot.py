@@ -14,6 +14,7 @@ import re
 import traceback
 from datetime import datetime, timedelta, timezone
 
+from office import report
 from settings import BASE
 
 KST = timezone(timedelta(hours=9))
@@ -160,19 +161,29 @@ def run_once(slot: str, topic: str | None, upload: bool, privacy: str, category:
     history = load_history()
     idea = None
     if not topic:
+        report("idea", "상담 창구 접수함 확인할게요! 대표님 아이디어 들어온 거 있나…", "discord", stage="idea",
+               slot=slot, publish_at=publish_at.isoformat() if publish_at else None,
+               category=None, label=None, topic=None, title=None, voice=None, progress=None)
         idea = next_idea()
+        report("idea", f"대표님 아이디어 접수! \"{idea['text'][:40]}\"" if idea else "새 접수는 없어요. 기획실로 넘길게요",
+               "discord", kind="report" if idea else "work", idea=idea["text"][:80] if idea else None)
         if idea:
             shaped = shape_idea(PROFILE, idea["text"], {k: v[0] for k, v in CATEGORIES.items()})
             topic, category = shaped["topic"], category or shaped["category"]
             print(f"💡 디스코드 아이디어 사용: {idea['text'][:60]}")
     category = category or pick_category(slot, history)
     cat_desc, guide, tone, cat_tags, _ = CATEGORIES[category]
+    report("plan", f"이번 건은 '{LABELS[category]}'로 갑니다!", "pd", stage="plan", category=category,
+           label=LABELS[category])
     if not topic:
+        report("plan", "기획 회의 시작! 지난 영상이랑 안 겹치게 고를게요", "gemini")
         topic = pick_topic(PROFILE, f"{SLOTS[slot][0]}\n이번 카테고리: {cat_desc}\n"
                            "새 시청자 유입이 목표: 사람들이 유튜브에서 실제로 많이 검색하는 고민 "
                            "(전세 보증금 · 청약 당첨 · 첫 집 대출 · 양도세 · 경매 입문 · 상가 공실 등)과 바로 연결되는 주제로",
                            [h["topic"] for h in history])
     print(f"▶ [{slot}/{category}] 주제: {topic}")
+    report("plan", f"주제 확정: {topic}", "gemini", topic=topic)
+    report("script", "카피 쓰기 시작합니다 ✍️", "gemini", stage="script")
     # 구글 검색 확인은 유료 Gemini 키에서만 됨 — 사용자 11/20 결정: 무료 유지(B) → 꺼 둠, 숫자 없이 원리 위주
     facts = research(f"{topic} ({LABELS[category]})") if os.environ.get("RESEARCH") == "1" else ""
     if facts:
@@ -187,6 +198,7 @@ def run_once(slot: str, topic: str | None, upload: bool, privacy: str, category:
                         "쓰지 말고, 제도의 원리 · 따져 볼 점 · 흔한 실수 위주로. 숫자가 필요하면 '꼭 공식 자료로 확인하세요'로)"),
                      seconds=SECONDS)
     title, sentences = s["title"], s["sentences"]
+    report("review", f"검수 끝! 제목 '{title}', 문장 {len(sentences)}개로 확정", "reviewer", title=title)
     print(f"  제목: {title}\n" + "\n".join(f"  - {x}" for x in sentences) + "\n  장면: " + " / ".join(s.get("scenes") or []))
 
     now = datetime.now(KST)
@@ -248,6 +260,12 @@ def finish(record: dict, s: dict, out, upload: bool, privacy: str, publish_at, h
     return record
 
 
+def report_error(msg: str):
+    """지금 일하던 부서 직원이 문제 보고."""
+    from office import current_dept
+    report(current_dept(), "앗, 문제가 생겼어요: " + (msg.strip().splitlines() or ["?"])[0][:120], "", kind="error")
+
+
 def run_with_retry(**kw) -> dict | None:
     """실패 시 새 주제로 1번 더 시도 (Gemini 과부하·영상 검색 실패 등 일시적 오류 대비)."""
     for attempt in (1, 2):
@@ -259,9 +277,13 @@ def run_with_retry(**kw) -> dict | None:
             if "토큰" in str(e) or "채널" in str(e):  # 로그인 문제는 재시도해도 소용없음
                 raise
             print(f"⚠ {e}")
-        except Exception:
+            report_error(str(e))
+        except Exception as e:
             traceback.print_exc()
+            report_error(f"{type(e).__name__}: {e}")
         print("⚠ 실패 → 재시도" if attempt == 1 else "❌ 2회 모두 실패")
+        report("plan", "새 주제로 다시 해볼게요!" if attempt == 1 else "두 번 다 실패했어요… 다음 근무 때 다시 채울게요",
+               "pd", stage="plan", kind="error" if attempt == 2 else "work")
     return None
 
 
@@ -279,6 +301,7 @@ def schedule():
             failed.append(at)
             continue
         print(f"\n===== {at:%m/%d %H:%M} 공개 예약분 ({slot}) =====")
+        report("ops", f"{at:%m/%d %H:%M} 공개분 작업 착수합니다!", "pd", stage="ops")
         if not run_with_retry(slot=slot, topic=None, upload=True, privacy="private", publish_at=at):
             failed.append(at)
         os.environ.pop("VOICE", None)  # 목소리 고정은 첫 편에만
