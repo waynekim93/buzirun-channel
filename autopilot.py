@@ -27,7 +27,9 @@ PROFILE = ("부지런 — '부지런한 사람이 집을 산다'. 부동산 지�
            "(예: '전세 계약 당일 집주인이 대출받으면 생기는 일', '경매 낙찰받고도 집을 못 받는 경우', "
            "'같은 땅인데 지목 하나로 값이 달라지는 이유').")
 FORMAT = ("구성: 첫 문장은 2초 안에 스크롤을 멈추게 하는 훅(손해·함정·몰랐던 사실), "
-          "중간은 핵심 3가지를 '첫째·둘째·셋째'처럼 또렷하게, 마지막 문장은 한 줄 정리 + 댓글 유도. "
+          "중간은 핵심 3가지를 '첫째·둘째·셋째'처럼 또렷하게, 마지막 두 문장은 한 줄 정리 + 아래 (마무리) 지시. "
+          "제목은 사람들이 실제로 검색하는 말(청약 · 전세 · 월세 · 경매 · 양도세 · 상가 · 토지 등)을 맨 앞에 두고, "
+          "손해 · 함정 · 몰랐던 사실이 드러나게 (예: '전세 계약 당일 이것 모르면 보증금 날립니다'). "
           "⚠️ 누구나 아는 뻔한 말 금지 (예: '인터넷으로 신청할 수 있다', '계약서를 꼼꼼히 읽어라', '전문가와 상담하라', "
           "'발품을 팔아라') — 핵심 3가지는 각각 '이건 몰랐네' 싶은 구체적인 내용이어야 함: 실제로 손해 보는 구조, "
           "헷갈리는 용어의 정확한 뜻, 사람들이 흔히 잘못 아는 것, 순서·조건에 숨은 함정. "
@@ -36,30 +38,30 @@ FORMAT = ("구성: 첫 문장은 2초 안에 스크롤을 멈추게 하는 훅(�
 # 카테고리: (설명, 대본 지시, 목소리 톤, 태그, 대상)
 CATEGORIES = {
     "subscription": ("청약 · 전월세 — 청약 제도와 가점, 특별공급, 전세·월세 계약, 보증금 지키기, 전세사기 예방",
-                     FORMAT + "마지막은 '청약·전세 궁금한 점 댓글로!'. 초보도 바로 이해하게 쉬운 말로.",
+                     FORMAT + "초보도 바로 이해하게 쉬운 말로.",
                      "든든한 선배처럼 차분하고 또렷하게",
-                     ["청약", "전세", "내집마련"], "초보"),
+                     ["청약", "전세", "월세", "내집마련"], "초보"),
     "contract": ("계약 · 매매 상식 — 아파트 사고팔 때 절차, 등기부등본, 계약금·중도금·잔금, 중개수수료, 주택담보대출",
-                 FORMAT + "마지막은 '계약 앞두고 있다면 저장해 두세요!'. 실수하기 쉬운 포인트 위주로.",
+                 FORMAT + "실수하기 쉬운 포인트 위주로.",
                  "꼼꼼하게 짚어 주듯 또박또박",
-                 ["부동산계약", "아파트매매", "부동산상식"], "초보"),
+                 ["아파트", "부동산상식", "아파트매매", "내집마련"], "초보"),
     "tax": ("세금 · 정책 — 취득세·양도세·보유세(재산세·종부세), 대출 규제(DSR·LTV), 새로 바뀐 부동산 정책",
             FORMAT + "제도가 자주 바뀌니 구체적 숫자 대신 원리와 체크 포인트 위주로. "
-            "마지막은 '내 상황은 세무사와 꼭 확인하세요' 뉘앙스 + 댓글 유도.",
+            "내 상황은 세무사와 확인해야 한다는 뉘앙스를 정리 문장에 살짝.",
             "신뢰감 있게 차분하고 명확하게",
-            ["부동산세금", "양도세", "부동산정책"], "초보"),
+            ["부동산세금", "절세", "양도세", "부동산정책"], "초보"),
     "commercial": ("건물 · 상가 — 꼬마빌딩, 상가 투자, 임대수익률 계산, 공실·권리금, 상가임대차",
-                   FORMAT + "마지막은 '건물주 되고 싶다면 팔로우!'. 수익 과장 금지, 위험도 같이.",
+                   FORMAT + "수익 과장 금지, 위험도 같이.",
                    "자신감 있게 시원시원하게",
-                   ["상가투자", "꼬마빌딩", "건물주"], "투자자"),
+                   ["건물주", "상가투자", "꼬마빌딩", "부동산투자"], "투자자"),
     "land": ("토지 — 땅 투자 기초, 용도지역, 맹지, 개발제한구역, 토지거래허가, 지목",
-             FORMAT + "마지막은 '땅 공부 같이 해요, 댓글로 질문!'. 특정 지역 호재 단정 금지.",
+             FORMAT + "특정 지역 호재 단정 금지.",
              "흥미로운 비밀을 알려 주듯 생생하게",
-             ["토지투자", "땅투자", "부동산공부"], "투자자"),
+             ["토지투자", "땅투자", "부동산투자", "부동산공부"], "투자자"),
     "auction": ("경매 · 공매 — 경매 절차, 권리분석(말소기준권리), 명도, 유찰, 공매(온비드)와 경매 차이",
-                FORMAT + "마지막은 '경매 입문, 저장해 두세요!'. 어려운 용어는 한 번 더 쉬운 말로.",
+                FORMAT + "어려운 용어는 한 번 더 쉬운 말로.",
                 "차근차근 풀어 주듯 또렷하게",
-                ["부동산경매", "경매", "공매"], "투자자"),
+                ["부동산경매", "경매", "공매", "부동산투자"], "투자자"),
 }
 LABELS = {"subscription": "청약·전월세", "contract": "계약·매매 상식", "tax": "세금·정책",
           "commercial": "건물·상가", "land": "토지", "auction": "경매·공매"}
@@ -73,12 +75,18 @@ SLOTS = {
     "night": ("밤 9시. 집에서 여유 있게 부동산 공부하는 사람들 · 투자 관심층",
               {"subscription": 2, "contract": 1, "tax": 2, "commercial": 3, "land": 3, "auction": 3}),
 }
-BASE_TAGS = ["Shorts", "부지런", "부동산"]
+BASE_TAGS = ["부동산", "재테크", "내집마련", "부동산공부", "부동산상식", "부지런", "Shorts"]
+SUBSCRIBE = "https://www.youtube.com/@buzirun?sub_confirmation=1"
+# 마무리 문장: 목표가 구독자 500명이라 구독 유도를 더 자주, 가끔 댓글 · 저장 (참여도도 노출에 중요)
+CTAS = [("마지막 문장은 짧은 구독 유도. '부지런한 사람이 집을 산다'와 이어지게 "
+         "(예: '이런 거 매일 알려 드려요, 부지런히 구독!', '내 집 마련까지 부지런하게, 구독하고 같이 가요').", 6),
+        ("마지막 문장은 시청자가 자기 경험을 댓글로 쓰고 싶어지는 짧은 질문 (예: '여러분은 이거 알고 계셨나요? 댓글로!').", 2),
+        ("마지막 문장은 '나중에 꼭 필요하니 저장해 두세요!'처럼 저장 유도 + 구독.", 2)]
 # 유튜브 예약 공개 시각 (KST) — 사용자 11/20 결정 07:00 / 12:00 / 18:00 / 21:00
 PUBLISH_TIMES = {"morning": (7, 0), "noon": (12, 0), "evening": (18, 0), "night": (21, 0)}
 HORIZON = timedelta(hours=26)    # 이 시간 안에 공개될 회차만 미리 만듦
 LEAD = timedelta(minutes=25)     # 1편 제작·업로드 여유
-SECONDS = 40                     # 30~50초 목표
+SECONDS = 35                     # 쇼츠는 끝까지 보는 비율이 노출에 중요 — 35초 안팎
 DISCLAIMER = ("※ 이 영상은 일반적인 부동산 정보이며 투자 · 세무 · 법률 자문이 아닙니다. "
               "제도와 세율은 바뀔 수 있으니 실제 결정 전 국토교통부 · 국세청 등 공식 자료와 전문가에게 꼭 확인하세요.")
 
@@ -137,13 +145,17 @@ def run_once(slot: str, topic: str | None, upload: bool, privacy: str, category:
     category = category or pick_category(slot, history)
     cat_desc, guide, tone, cat_tags, _ = CATEGORIES[category]
     if not topic:
-        topic = pick_topic(PROFILE, f"{SLOTS[slot][0]}\n이번 카테고리: {cat_desc}", [h["topic"] for h in history])
+        topic = pick_topic(PROFILE, f"{SLOTS[slot][0]}\n이번 카테고리: {cat_desc}\n"
+                           "새 시청자 유입이 목표: 사람들이 유튜브에서 실제로 많이 검색하는 고민 "
+                           "(전세 보증금 · 청약 당첨 · 첫 집 대출 · 양도세 · 경매 입문 · 상가 공실 등)과 바로 연결되는 주제로",
+                           [h["topic"] for h in history])
     print(f"▶ [{slot}/{category}] 주제: {topic}")
     # 구글 검색 확인은 유료 Gemini 키에서만 됨 — 사용자 11/20 결정: 무료 유지(B) → 꺼 둠, 숫자 없이 원리 위주
     facts = research(f"{topic} ({LABELS[category]})") if os.environ.get("RESEARCH") == "1" else ""
     if facts:
         print("  확인된 사실:\n" + "\n".join("    " + x for x in facts.splitlines() if x.strip()))
-    s = write_script(f"{topic}\n(채널 콘셉트: {PROFILE})\n(카테고리 지침: {guide})"
+    cta = random.choices([c for c, _ in CTAS], weights=[w for _, w in CTAS])[0]
+    s = write_script(f"{topic}\n(채널 콘셉트: {PROFILE})\n(카테고리 지침: {guide})\n(마무리: {cta})"
                      + (f"\n(확인된 사실 — 숫자는 여기 있는 것만, [불확실]은 숫자 빼고:\n{facts})" if facts else
                         "\n(최신 기준을 확인할 수 없음 — 세율·한도·금액·기간·금리 같은 구체적 숫자와 '올해 바뀐' 같은 시점 단정은 "
                         "쓰지 말고, 제도의 원리 · 따져 볼 점 · 흔한 실수 위주로. 숫자가 필요하면 '꼭 공식 자료로 확인하세요'로)"),
@@ -184,12 +196,22 @@ def finish(record: dict, s: dict, out, upload: bool, privacy: str, publish_at, h
         from alert import send
         from youtube_uploader import upload_video
         tags = [t.replace(" ", "").lstrip("#") for t in s.get("tags", [])][:8]
-        hashtags = list(dict.fromkeys(["Shorts", "부동산"] + cat_tags[:2] + tags[:2]))
-        desc = (f"{s.get('description', '')}\n\n" + "\n".join(s["sentences"])
-                + "\n\n🏠 부지런한 사람이 집을 산다 — 부동산 지식을 매일 짧게, 부지런\n\n"
+        # 설명란 해시태그 중 앞 3개가 제목 위에 보임 → 가장 많이 검색되는 것부터
+        hashtags = list(dict.fromkeys(["부동산", cat_tags[0], "재테크", *cat_tags[1:], "내집마련", *tags[:3], "Shorts"]))[:12]
+        title = f"{s['title']} #{cat_tags[0]} #부동산"
+        desc = (f"{s.get('description', '')}\n\n"
+                f"🔔 구독하고 매일 부동산 지식 받기 👉 {SUBSCRIBE}\n\n"
+                + "\n".join(s["sentences"])
+                + "\n\n🏠 부지런한 사람이 집을 산다 — 매일 아침 7시 · 점심 12시 · 저녁 6시 · 밤 9시, 부동산 지식을 짧게\n"
+                "청약 · 전월세 · 계약 · 세금 · 건물 · 토지 · 경매까지\n\n"
                 + DISCLAIMER + "\n\n" + " ".join("#" + t for t in hashtags))
-        record["video_id"] = upload_video(out, f"{s['title']} #Shorts", CHANNEL, description=desc,
-                                          tags=list(dict.fromkeys(BASE_TAGS + cat_tags + tags)), privacy=privacy,
+        all_tags, n = [], 0
+        for t in dict.fromkeys(BASE_TAGS + cat_tags + tags + [LABELS[record["category"]].replace("·", " ")]):
+            if n + len(t) + 1 > 450:  # 유튜브 태그 합계 500자 제한
+                break
+            all_tags.append(t)
+            n += len(t) + 1
+        record["video_id"] = upload_video(out, title, CHANNEL, description=desc, tags=all_tags, privacy=privacy,
                                           publish_at=publish_at)
         when = f"{publish_at:%m/%d %H:%M} 공개 예약" if publish_at else "바로 공개"
         send(f"✅ {when} · [{LABELS.get(record['category'], '')}] {s['title']}\nhttps://youtube.com/shorts/{record['video_id']}")

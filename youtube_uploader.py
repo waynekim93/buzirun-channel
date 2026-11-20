@@ -79,7 +79,7 @@ def upload_video(path, title, channel, description="", tags=None, privacy="priva
             "title": title[:100],
             "description": description,
             "tags": tags or [],
-            "categoryId": "22",
+            "categoryId": "27",  # 교육 (부동산 지식 채널)
             "defaultLanguage": "ko",
         },
         # containsSyntheticMedia: AI 목소리(실제 사람 목소리 복제 포함) 사용 → 유튜브 'AI 합성 콘텐츠' 자진 표시 (정책 위험 감소)
