@@ -115,5 +115,45 @@
   "publish_at": "2026-11-22T12:00:00+09:00",
   "note": "로컬 시험 영상(첫 화면 후킹) — 사용자 요청으로 예약",
   "clips": []
+ },
+ {
+  "date": "2026-11-20T23:39+09:00",
+  "slot": "evening",
+  "category": "commercial",
+  "topic": "세입자 내보낼 때 '재소전화해조서' 안 쓰면 겪는 일",
+  "title": "월세 세입자 내보낼 때 제소전화해조서 안 쓰면 겪는 일",
+  "file": "20261120_2339_evening_월세_세입자_내보낼_때_제소전화해조서_안_쓰면_겪는_일.mp4",
+  "video_id": "Y5seYqzNMoA",
+  "cta": "none",
+  "idea": "재소전화해조서 역할, 필요 이유. 건물주입장에서",
+  "publish_at": "2026-11-21T18:00:00+09:00",
+  "clips": [
+   "pixabay:198886",
+   "pixabay:87050",
+   "pixabay:203412",
+   "pixabay:174006",
+   "pixabay:221506",
+   "pixabay:367928"
+  ]
+ },
+ {
+  "date": "2026-11-20T23:55+09:00",
+  "slot": "night",
+  "category": "trivia",
+  "topic": "대한민국 아파트가 너도나도 '84㎡' 기준으로 만들어지는 진짜 이유",
+  "title": "청약 아파트가 84제곱만 넘쳐나는 진짜 이유",
+  "file": "20261120_2355_night_청약_아파트가_84제곱만_넘쳐나는_진짜_이유.mp4",
+  "video_id": "D2CUOIsKdOc",
+  "cta": "comment",
+  "publish_at": "2026-11-21T21:00:00+09:00",
+  "clips": [
+   "pixabay:136656",
+   "pixabay:87146",
+   "pixabay:217062",
+   "pixabay:11002",
+   "pixabay:258301",
+   "pixabay:3992",
+   "pixabay:239967"
+  ]
  }
 ]
