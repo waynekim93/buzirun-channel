@@ -175,5 +175,46 @@
    "pixabay:219134",
    "pixabay:272516"
   ]
+ },
+ {
+  "date": "2026-11-21T23:22+09:00",
+  "slot": "evening",
+  "category": "auction",
+  "topic": "경매보다 싸다고 '온비드 공매'로 집 샀다가 세입자 못 내보내고 피눈물 흘리는 이유",
+  "title": "공매 낙찰 세입자 못 내보내는 진짜 이유",
+  "file": "20261121_2322_evening_공매_낙찰_세입자_못_내보내는_진짜_이유.mp4",
+  "video_id": "37waad1Ef80",
+  "cta": "comment",
+  "publish_at": "2026-11-22T18:00:00+09:00",
+  "clips": [
+   "pixabay:115473",
+   "pixabay:72883",
+   "pixabay:9037",
+   "pixabay:209854",
+   "pixabay:335742",
+   "pixabay:27095",
+   "pixabay:50627",
+   "pixabay:327916"
+  ]
+ },
+ {
+  "date": "2026-11-21T23:38+09:00",
+  "slot": "night",
+  "category": "contract",
+  "topic": "아파트 잔금 날 법무사 견적서에서 '이 항목' 안 지우면 생돈 날리는 이유",
+  "title": "아파트 잔금 법무사 견적서 이 항목 지우세요",
+  "file": "20261121_2338_night_아파트_잔금_법무사_견적서_이_항목_지우세요.mp4",
+  "video_id": "rQ5gA1jS_fg",
+  "cta": "subscribe",
+  "publish_at": "2026-11-22T21:00:00+09:00",
+  "clips": [
+   "pixabay:41121",
+   "pixabay:174007",
+   "pixabay:214888",
+   "pixabay:4853",
+   "pixabay:148867",
+   "pixabay:154282",
+   "pixabay:134927"
+  ]
  }
 ]
