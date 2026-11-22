@@ -256,5 +256,45 @@
    "pixabay:131988",
    "pixabay:261423"
   ]
+ },
+ {
+  "date": "2026-11-22T23:26+09:00",
+  "slot": "evening",
+  "category": "commercial",
+  "topic": "상가 계약 직전 '건축물대장'에서 이 표시 확인 안 하면 인테리어비 다 날리고 영업도 못 하는 이유",
+  "title": "상가 계약 전 건축물대장 이것 확인 안 하면 망합니다",
+  "file": "20261122_2326_evening_상가_계약_전_건축물대장_이것_확인_안_하면_망합니다.mp4",
+  "video_id": "Z92orQYFKjQ",
+  "cta": "comment",
+  "publish_at": "2026-11-23T18:00:00+09:00",
+  "clips": [
+   "pixabay:251523",
+   "pixabay:8851",
+   "pixabay:50309",
+   "pixabay:73552",
+   "pixabay:42924",
+   "pixabay:173479"
+  ]
+ },
+ {
+  "date": "2026-11-22T23:42+09:00",
+  "slot": "night",
+  "category": "auction",
+  "topic": "경매로 아파트 낙찰받고 전 집주인이 밀린 관리비 영수증 받았을 때 억울하게 다 안 내도 되는 이유",
+  "title": "경매 아파트 밀린 관리비 다 내면 바보 되는 이유",
+  "file": "20261122_2342_night_경매_아파트_밀린_관리비_다_내면_바보_되는_이유.mp4",
+  "video_id": "wzBgRoLwq-0",
+  "cta": "save",
+  "publish_at": "2026-11-23T21:00:00+09:00",
+  "clips": [
+   "pixabay:268447",
+   "pixabay:162047",
+   "pixabay:108690",
+   "pixabay:20837",
+   "pixabay:59138",
+   "pixabay:41146",
+   "pixabay:137186",
+   "pixabay:64378"
+  ]
  }
 ]
