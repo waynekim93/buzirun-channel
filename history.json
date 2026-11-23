@@ -338,5 +338,46 @@
    "pixabay:86719",
    "pixabay:377590"
   ]
+ },
+ {
+  "date": "2026-11-23T23:38+09:00",
+  "slot": "evening",
+  "category": "contract",
+  "topic": "아파트 마음에 들어서 '가계약금' 쏘기 전 문자로 '이 한 줄' 안 남기면 계약 파기돼도 돈 다 떼이는 이유",
+  "title": "가계약금 쏘기 전 이 문자 안 남기면 돈 떼입니다",
+  "file": "20261123_2338_evening_가계약금_쏘기_전_이_문자_안_남기면_돈_떼입니다.mp4",
+  "video_id": "XBTzNxKluOE",
+  "cta": "comment",
+  "publish_at": "2026-11-24T18:00:00+09:00",
+  "clips": [
+   "pixabay:64384",
+   "pixabay:29413",
+   "pixabay:172894",
+   "pixabay:29886",
+   "pixabay:142641",
+   "pixabay:3174",
+   "pixabay:24333"
+  ]
+ },
+ {
+  "date": "2026-11-23T23:49+09:00",
+  "slot": "night",
+  "category": "trivia",
+  "topic": "외국인은 절대 이해 못 하는 한국에만 '전세'가 있는 진짜 이유",
+  "title": "전세 외국인은 절대 이해 못 하는 진짜 이유",
+  "file": "20261123_2349_night_전세_외국인은_절대_이해_못_하는_진짜_이유.mp4",
+  "video_id": "hysVnLaqOZE",
+  "cta": "debate",
+  "publish_at": "2026-11-24T21:00:00+09:00",
+  "clips": [
+   "pixabay:38857",
+   "pixabay:136658",
+   "pixabay:260499",
+   "pixabay:216476",
+   "pixabay:184536",
+   "pixabay:41826",
+   "pixabay:137210",
+   "pixabay:41315"
+  ]
  }
 ]
