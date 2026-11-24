@@ -420,5 +420,46 @@
    "pixabay:2339",
    "pixabay:132069"
   ]
+ },
+ {
+  "date": "2026-11-24T23:37+09:00",
+  "slot": "evening",
+  "category": "commercial",
+  "topic": "상가 계약할 때 임대인이 '부가세 별도'라고 할 때 절대 그냥 넘어가면 안 되는 이유",
+  "title": "상가 계약 부가세 별도 무심코 넘기면 손해 봅니다",
+  "file": "20261124_2337_evening_상가_계약_부가세_별도_무심코_넘기면_손해_봅니다.mp4",
+  "video_id": "iEjIhld-mx4",
+  "cta": "save",
+  "publish_at": "2026-11-25T18:00:00+09:00",
+  "clips": [
+   "pixabay:3175",
+   "pixabay:40811",
+   "pixabay:62456",
+   "pixabay:26771",
+   "pixabay:272519",
+   "pixabay:12876",
+   "pixabay:198980",
+   "pixabay:219339"
+  ]
+ },
+ {
+  "date": "2026-11-24T23:54+09:00",
+  "slot": "night",
+  "category": "trivia",
+  "topic": "아파트 이름이 '래미안 푸르지오'처럼 점점 길어지는 진짜 이유",
+  "title": "아파트 이름이 점점 길어지는 진짜 이유",
+  "file": "20261124_2354_night_아파트_이름이_점점_길어지는_진짜_이유.mp4",
+  "video_id": "FmfaVzXKopA",
+  "cta": "comment",
+  "publish_at": "2026-11-25T21:00:00+09:00",
+  "clips": [
+   "pixabay:262909",
+   "pixabay:199375",
+   "pixabay:214695",
+   "pixabay:27199",
+   "pixabay:106340",
+   "pixabay:264948",
+   "pixabay:33569"
+  ]
  }
 ]
