@@ -502,5 +502,46 @@
    "pixabay:9728",
    "pixabay:92009"
   ]
+ },
+ {
+  "date": "2026-11-25T23:36+09:00",
+  "slot": "evening",
+  "category": "landlord",
+  "topic": "건물 옥상에 '이것' 하나 설치하고 앉아서 매달 공짜 월세 챙기는 건물주들의 비밀",
+  "title": "상가 건물 옥상 하나로 매달 공짜 월세 버는 법",
+  "file": "20261125_2336_evening_상가_건물_옥상_하나로_매달_공짜_월세_버는_법.mp4",
+  "video_id": "Rd1HUbPXSu8",
+  "cta": "comment",
+  "publish_at": "2026-11-26T18:00:00+09:00",
+  "clips": [
+   "pixabay:4385",
+   "pixabay:179777",
+   "pixabay:59137",
+   "pixabay:41828",
+   "pixabay:198894",
+   "pixabay:172888",
+   "pixabay:272514",
+   "pixabay:201281"
+  ]
+ },
+ {
+  "date": "2026-11-25T23:44+09:00",
+  "slot": "night",
+  "category": "trivia",
+  "topic": "전국 아파트 단지에 '104동'과 '4층'이 은근히 잘 안 보이는 진짜 이유",
+  "title": "청약 아파트 104동이 사라진 진짜 이유",
+  "file": "20261125_2344_night_청약_아파트_104동이_사라진_진짜_이유.mp4",
+  "video_id": "YRzFe6foXpU",
+  "cta": "debate",
+  "publish_at": "2026-11-26T21:00:00+09:00",
+  "clips": [
+   "pixabay:257801",
+   "pixabay:42926",
+   "pixabay:268448",
+   "pixabay:131012",
+   "pixabay:377368",
+   "pixabay:218013",
+   "pixabay:34330"
+  ]
  }
 ]
