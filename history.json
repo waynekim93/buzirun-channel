@@ -584,5 +584,45 @@
    "pixabay:24145",
    "pixabay:129481"
   ]
+ },
+ {
+  "date": "2026-11-26T23:37+09:00",
+  "slot": "evening",
+  "category": "trivia",
+  "topic": "논밭뿐이던 강남이 대한민국 최고 부촌이 된 진짜 역사",
+  "title": "강남 토지 역사 왜 논밭이 최고 부촌이 되었을까",
+  "file": "20261126_2337_evening_강남_토지_역사_왜_논밭이_최고_부촌이_되었을까.mp4",
+  "video_id": "RjucmsWjk0M",
+  "cta": "comment",
+  "idea": "강남의 시초. 강남이 생기게 된 역사. 거기서 재미요소를 뽑아봐",
+  "publish_at": "2026-11-27T18:00:00+09:00",
+  "clips": [
+   "pixabay:78747",
+   "pixabay:227180",
+   "pixabay:90933",
+   "pixabay:71911",
+   "pixabay:35858",
+   "pixabay:156156"
+  ]
+ },
+ {
+  "date": "2026-11-26T23:49+09:00",
+  "slot": "night",
+  "category": "tax",
+  "topic": "취득세 아끼겠다고 집 사자마자 공동명의로 했다가 세무조사 맞고 수백만 원 토해내는 이유",
+  "title": "공동명의 세무조사, 취득세 아끼려다 세금 폭탄 맞은 이유",
+  "file": "20261126_2349_night_공동명의_세무조사,_취득세_아끼려다_세금_폭탄_맞은_이유.mp4",
+  "video_id": "MfSvBPSzi6M",
+  "cta": "subscribe",
+  "publish_at": "2026-11-27T21:00:00+09:00",
+  "clips": [
+   "pixabay:172892",
+   "pixabay:10824",
+   "pixabay:327922",
+   "pixabay:95818",
+   "pixabay:231166",
+   "pixabay:47158",
+   "pixabay:198477"
+  ]
  }
 ]
