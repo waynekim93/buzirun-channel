@@ -666,5 +666,45 @@
    "pixabay:31820",
    "pixabay:20459"
   ]
+ },
+ {
+  "date": "2026-11-27T23:31+09:00",
+  "slot": "evening",
+  "category": "subscription",
+  "topic": "전세 계약할 때 집주인 대신 '가족'이 나왔을 때 계약서 써놓고도 보증금 몽땅 날리는 이유",
+  "title": "전세 계약 집주인 대신 가족 나오면 보증금 날려요",
+  "file": "20261127_2331_evening_전세_계약_집주인_대신_가족_나오면_보증금_날려요.mp4",
+  "video_id": "ZS1cQIMBAXw",
+  "cta": "comment",
+  "publish_at": "2026-11-28T18:00:00+09:00",
+  "clips": [
+   "pixabay:23205",
+   "pixabay:160065",
+   "pixabay:371018",
+   "pixabay:91678",
+   "pixabay:38084",
+   "pixabay:221591",
+   "pixabay:160033"
+  ]
+ },
+ {
+  "date": "2026-11-27T23:40+09:00",
+  "slot": "night",
+  "category": "trivia",
+  "topic": "아파트 분양 광고에서 '몇 평'이라고 썼다가 과태료 폭탄 맞게 된 진짜 이유",
+  "title": "청약 분양 광고에 평수 썼다가 과태료 폭탄 맞는 이유",
+  "file": "20261127_2340_night_청약_분양_광고에_평수_썼다가_과태료_폭탄_맞는_이유.mp4",
+  "video_id": "UhwzGdR7n14",
+  "cta": "subscribe",
+  "publish_at": "2026-11-28T21:00:00+09:00",
+  "clips": [
+   "pixabay:154670",
+   "pixabay:200933",
+   "pixabay:134053",
+   "pixabay:234669",
+   "pixabay:130646",
+   "pixabay:21132",
+   "pixabay:4726"
+  ]
  }
 ]
