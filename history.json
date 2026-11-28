@@ -747,5 +747,46 @@
    "pixabay:13053",
    "pixabay:377370"
   ]
+ },
+ {
+  "date": "2026-11-28T23:25+09:00",
+  "slot": "evening",
+  "category": "auction",
+  "topic": "경매 낙찰받고 잔금 다 치렀는데 이사 갈 때까지 전 집주인이 관리비를 대신 내주지 않는 이유",
+  "title": "경매 낙찰 후 관리비 폭탄 피하는 법",
+  "file": "20261128_2325_evening_경매_낙찰_후_관리비_폭탄_피하는_법.mp4",
+  "video_id": "9h9mitr6Zwc",
+  "cta": "comment",
+  "publish_at": "2026-11-29T18:00:00+09:00",
+  "clips": [
+   "pixabay:241211",
+   "pixabay:107240",
+   "pixabay:377374",
+   "pixabay:215096",
+   "pixabay:130783",
+   "pixabay:64215",
+   "pixabay:369"
+  ]
+ },
+ {
+  "date": "2026-11-28T23:45+09:00",
+  "slot": "night",
+  "category": "contract",
+  "topic": "아파트 매매 계약할 때 집주인한테 '국세·지방세 완납증명서' 안 받으면 집 사고도 압류당하는 이유",
+  "title": "아파트 매매 이것 안 받으면 집 압류당합니다",
+  "file": "20261128_2345_night_아파트_매매_이것_안_받으면_집_압류당합니다.mp4",
+  "video_id": "DyjYNQVByOM",
+  "cta": "none",
+  "publish_at": "2026-11-29T21:00:00+09:00",
+  "clips": [
+   "pixabay:327907",
+   "pixabay:121409",
+   "pixabay:131992",
+   "pixabay:198900",
+   "pixabay:50109",
+   "pixabay:45985",
+   "pixabay:129422",
+   "pixabay:335407"
+  ]
  }
 ]
